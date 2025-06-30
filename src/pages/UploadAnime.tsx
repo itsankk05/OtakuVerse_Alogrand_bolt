@@ -458,7 +458,7 @@ async function waitForAppConfirmation(txId: string, timeout = 60): Promise<numbe
           ipfsCid: result.ipfs_cid
         });
 
-        const animeResponse = await fetch('https://372c-49-43-154-254.ngrok-free.app/submit-anime', {
+        const animeResponse = await fetch('https://d0e8-49-43-153-47.ngrok-free.app/submit-anime', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(animeSubmissionPayload)
