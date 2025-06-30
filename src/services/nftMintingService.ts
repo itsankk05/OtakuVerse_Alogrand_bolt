@@ -143,7 +143,7 @@ export interface EnhancedMintNFTPayload {
 }
 
 class NFTMintingService {
-  private readonly MINT_ENDPOINT = 'https://372c-49-43-154-254.ngrok-free.app/mint-nft';
+  private readonly MINT_ENDPOINT = 'https://otakuverse-alogrand.onrender.com/mint-nft';
 
   /**
    * Map NFT data from /all-anime API response to /mint-nft payload format
