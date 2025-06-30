@@ -27,7 +27,7 @@ interface UseAnimeDataReturn {
   refetch: () => Promise<void>;
 }
 
-const API_ENDPOINT = 'https://372c-49-43-154-254.ngrok-free.app/all-anime';
+const API_ENDPOINT = 'https://d0e8-49-43-153-47.ngrok-free.app/all-anime';
 const ITEMS_PER_PAGE = 12;
 
 // Helper function to convert IPFS URLs to gateway URLs
