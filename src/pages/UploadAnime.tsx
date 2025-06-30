@@ -396,7 +396,7 @@ async function waitForAppConfirmation(txId: string, timeout = 60): Promise<numbe
           const appId = await waitForAppConfirmation(txId, 30);
           const appIdToStore = typeof appId === 'bigint' ? Number(appId) : appId;
           console.log("🎯 Deployed Contract App ID:", appIdToStore);
-          await fetch('https://372c-49-43-154-254.ngrok-free.app/store-app-id', {
+          await fetch('https://d0e8-49-43-153-47.ngrok-free.app/store-app-id', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
