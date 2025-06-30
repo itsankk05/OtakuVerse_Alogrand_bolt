@@ -1,0 +1,867 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-size: 16px; /* Base font size for rem calculations */
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #000000;
+    color: #ffffff;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  
+  .font-orbitron {
+    font-family: 'Orbitron', monospace;
+  }
+
+  /* Responsive typography scaling */
+  h1 {
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    line-height: 1.2;
+  }
+  
+  h2 {
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    line-height: 1.3;
+  }
+  
+  h3 {
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    line-height: 1.4;
+  }
+  
+  h4 {
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    line-height: 1.4;
+  }
+  
+  p {
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    line-height: 1.6;
+  }
+  
+  /* Responsive images */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Responsive videos */
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-black/40 backdrop-blur-md border border-purple-500/20 rounded-xl;
+    box-shadow: 0 8px 32px rgba(139, 69, 255, 0.1);
+  }
+  
+  .anime-card {
+    @apply glass-card hover:bg-purple-900/20 transition-all duration-300 hover:transform hover:scale-105 hover:border-purple-400/40;
+    box-shadow: 0 4px 20px rgba(139, 69, 255, 0.15);
+  }
+  
+  .neon-glow {
+    box-shadow: 0 0 20px rgba(139, 69, 255, 0.5), 0 0 40px rgba(139, 69, 255, 0.3);
+  }
+  
+  .progress-bar {
+    background: linear-gradient(90deg, #8b45ff 0%, #ff006e 50%, #00d4ff 100%);
+  }
+  
+  .anime-gradient {
+    background: linear-gradient(135deg, #8b45ff 0%, #ff006e 50%, #00d4ff 100%);
+  }
+  
+  .hero-gradient {
+    background: radial-gradient(ellipse at center, rgba(139, 69, 255, 0.3) 0%, rgba(0, 0, 0, 0.8) 70%);
+  }
+  
+  .text-anime-gradient {
+    background: linear-gradient(135deg, #8b45ff 0%, #ff006e 50%, #00d4ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Responsive container */
+  .responsive-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  /* Mobile-first responsive padding */
+  .responsive-padding {
+    padding: 1rem;
+  }
+  
+  /* Responsive grid system */
+  .responsive-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+  
+  /* Responsive flex utilities */
+  .responsive-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Video Player Slider Styles */
+  .slider {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 100%;
+    height: 0.25rem;
+  }
+
+  .slider::-webkit-slider-track {
+    background: rgba(255, 255, 255, 0.2);
+    height: 0.25rem;
+    border-radius: 0.125rem;
+  }
+
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: linear-gradient(135deg, #8b45ff 0%, #ff006e 50%, #00d4ff 100%);
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .slider::-moz-range-track {
+    background: rgba(255, 255, 255, 0.2);
+    height: 0.25rem;
+    border-radius: 0.125rem;
+    border: none;
+  }
+
+  .slider::-moz-range-thumb {
+    background: linear-gradient(135deg, #8b45ff 0%, #ff006e 50%, #00d4ff 100%);
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Responsive aspect ratios */
+  .aspect-video {
+    aspect-ratio: 16 / 9;
+  }
+  
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+  }
+  
+  .aspect-portrait {
+    aspect-ratio: 3 / 4;
+  }
+
+  /* Smooth transitions for video controls */
+  .video-controls {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+
+  /* Loading animation for video player */
+  .video-loading {
+    @apply animate-pulse;
+  }
+
+  /* Custom scrollbar for video settings menus */
+  .video-menu {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(139, 69, 255, 0.5) transparent;
+  }
+
+  .video-menu::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .video-menu::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .video-menu::-webkit-scrollbar-thumb {
+    background: rgba(139, 69, 255, 0.5);
+    border-radius: 3px;
+  }
+
+  .video-menu::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 69, 255, 0.7);
+  }
+
+  /* Responsive navigation */
+  .nav-mobile {
+    @apply fixed inset-x-0 top-16 z-40 bg-black/95 backdrop-blur-md border-t border-purple-500/20;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .nav-mobile.open {
+    transform: translateY(0);
+  }
+
+  /* Responsive button sizes */
+  .btn-responsive {
+    @apply px-4 py-2 text-sm;
+  }
+
+  /* Responsive text utilities */
+  .text-responsive-xs {
+    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+  }
+  
+  .text-responsive-sm {
+    font-size: clamp(0.875rem, 2vw, 1rem);
+  }
+  
+  .text-responsive-base {
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+  }
+  
+  .text-responsive-lg {
+    font-size: clamp(1.125rem, 3vw, 1.25rem);
+  }
+  
+  .text-responsive-xl {
+    font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+  }
+
+  /* Responsive spacing utilities */
+  .space-responsive {
+    gap: clamp(0.5rem, 2vw, 1rem);
+  }
+  
+  .padding-responsive {
+    padding: clamp(1rem, 4vw, 2rem);
+  }
+  
+  .margin-responsive {
+    margin: clamp(0.5rem, 2vw, 1rem);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(139, 69, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #8b45ff, #ff006e);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #9333ea, #ff1a7a);
+}
+
+/* Anime-style animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(139, 69, 255, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(139, 69, 255, 0.6), 0 0 40px rgba(255, 0, 110, 0.3);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes video-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes control-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-in {
+  animation: slide-in 0.6s ease-out;
+}
+
+.animate-video-fade-in {
+  animation: video-fade-in 0.5s ease-out;
+}
+
+.animate-control-slide-up {
+  animation: control-slide-up 0.3s ease-out;
+}
+
+/* Particle effects */
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #8b45ff;
+  border-radius: 50%;
+  animation: particle-float 6s linear infinite;
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) translateX(100px);
+    opacity: 0;
+  }
+}
+
+/* Video player specific styles */
+.video-player-container {
+  position: relative;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  width: 100%;
+}
+
+.video-player-container:fullscreen {
+  border-radius: 0;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,
+    transparent 20%,
+    transparent 80%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  pointer-events: none;
+}
+
+.video-controls-visible .video-overlay {
+  opacity: 1;
+}
+
+.video-controls-hidden .video-overlay {
+  opacity: 0;
+}
+
+/* ==========================================
+   RESPONSIVE BREAKPOINTS
+   ========================================== */
+
+/* Mobile First - Base styles (320px+) */
+@media (min-width: 320px) {
+  .responsive-container {
+    padding: 0 1rem;
+  }
+  
+  .responsive-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .responsive-flex {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .btn-responsive {
+    @apply px-3 py-2 text-sm;
+  }
+  
+  .glass-card {
+    @apply p-4;
+  }
+  
+  /* Mobile navigation adjustments */
+  .nav-mobile {
+    @apply p-4;
+  }
+  
+  /* Mobile video player adjustments */
+  .video-player-container {
+    border-radius: 8px;
+  }
+  
+  .video-controls {
+    @apply p-3;
+  }
+  
+  .video-controls button {
+    @apply p-2;
+  }
+  
+  /* Mobile typography */
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+  
+  /* Mobile spacing */
+  .space-responsive {
+    gap: 0.5rem;
+  }
+  
+  .padding-responsive {
+    padding: 1rem;
+  }
+}
+
+/* Small Mobile (375px+) */
+@media (min-width: 375px) {
+  .responsive-container {
+    padding: 0 1.25rem;
+  }
+  
+  .btn-responsive {
+    @apply px-4 py-2;
+  }
+  
+  .glass-card {
+    @apply p-5;
+  }
+}
+
+/* Large Mobile (425px+) */
+@media (min-width: 425px) {
+  .responsive-container {
+    padding: 0 1.5rem;
+  }
+  
+  .responsive-grid {
+    gap: 1.25rem;
+  }
+  
+  .responsive-flex {
+    gap: 1.25rem;
+  }
+  
+  .space-responsive {
+    gap: 0.75rem;
+  }
+}
+
+/* Tablet Portrait (768px+) */
+@media (min-width: 768px) {
+  .responsive-container {
+    padding: 0 2rem;
+  }
+  
+  .responsive-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .responsive-flex {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+  
+  .btn-responsive {
+    @apply px-6 py-3 text-base;
+  }
+  
+  .glass-card {
+    @apply p-6;
+  }
+  
+  /* Tablet navigation */
+  .nav-mobile {
+    @apply hidden;
+  }
+  
+  /* Tablet video player */
+  .video-player-container {
+    border-radius: 12px;
+  }
+  
+  .video-controls {
+    @apply p-4;
+  }
+  
+  .video-controls button {
+    @apply p-3;
+  }
+  
+  /* Tablet typography */
+  h1 {
+    font-size: 2.25rem;
+  }
+  
+  h2 {
+    font-size: 1.875rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+  }
+  
+  /* Tablet spacing */
+  .space-responsive {
+    gap: 1rem;
+  }
+  
+  .padding-responsive {
+    padding: 1.5rem;
+  }
+}
+
+/* Tablet Landscape (1024px+) */
+@media (min-width: 1024px) {
+  .responsive-container {
+    padding: 0 2.5rem;
+  }
+  
+  .responsive-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .responsive-flex {
+    gap: 2rem;
+  }
+  
+  .btn-responsive {
+    @apply px-8 py-3 text-lg;
+  }
+  
+  .glass-card {
+    @apply p-8;
+  }
+  
+  /* Desktop typography */
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.75rem;
+  }
+  
+  /* Desktop spacing */
+  .space-responsive {
+    gap: 1.25rem;
+  }
+  
+  .padding-responsive {
+    padding: 2rem;
+  }
+}
+
+/* Desktop (1440px+) */
+@media (min-width: 1440px) {
+  .responsive-container {
+    padding: 0 3rem;
+    max-width: 1440px;
+  }
+  
+  .responsive-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+  }
+  
+  .responsive-flex {
+    gap: 2.5rem;
+  }
+  
+  .btn-responsive {
+    @apply px-10 py-4 text-xl;
+  }
+  
+  .glass-card {
+    @apply p-10;
+  }
+  
+  /* Large desktop typography */
+  h1 {
+    font-size: 3rem;
+  }
+  
+  h2 {
+    font-size: 2.5rem;
+  }
+  
+  h3 {
+    font-size: 2rem;
+  }
+  
+  /* Large desktop spacing */
+  .space-responsive {
+    gap: 1.5rem;
+  }
+  
+  .padding-responsive {
+    padding: 2.5rem;
+  }
+}
+
+/* Ultra Wide (1920px+) */
+@media (min-width: 1920px) {
+  .responsive-container {
+    max-width: 1920px;
+    padding: 0 4rem;
+  }
+  
+  .responsive-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 3rem;
+  }
+  
+  .responsive-flex {
+    gap: 3rem;
+  }
+  
+  .padding-responsive {
+    padding: 3rem;
+  }
+}
+
+/* ==========================================
+   RESPONSIVE UTILITIES
+   ========================================== */
+
+/* Hide/Show utilities for different screen sizes */
+.mobile-only {
+  @apply block;
+}
+
+.tablet-only {
+  @apply hidden;
+}
+
+.desktop-only {
+  @apply hidden;
+}
+
+@media (min-width: 768px) {
+  .mobile-only {
+    @apply hidden;
+  }
+  
+  .tablet-only {
+    @apply block;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tablet-only {
+    @apply hidden;
+  }
+  
+  .desktop-only {
+    @apply block;
+  }
+}
+
+/* Responsive text alignment */
+.text-center-mobile {
+  @apply text-center;
+}
+
+@media (min-width: 768px) {
+  .text-center-mobile {
+    @apply text-left;
+  }
+}
+
+/* Responsive flex direction */
+.flex-col-mobile {
+  @apply flex-col;
+}
+
+@media (min-width: 768px) {
+  .flex-col-mobile {
+    @apply flex-row;
+  }
+}
+
+/* ==========================================
+   ACCESSIBILITY IMPROVEMENTS
+   ========================================== */
+
+/* Focus states for better accessibility */
+.video-controls button:focus,
+.btn-responsive:focus,
+button:focus {
+  outline: 2px solid #8b45ff;
+  outline-offset: 2px;
+}
+
+.slider:focus {
+  outline: 2px solid #8b45ff;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .glass-card {
+    border-width: 2px;
+    border-color: rgba(139, 69, 255, 0.8);
+  }
+  
+  .text-anime-gradient {
+    color: #8b45ff;
+    background: none;
+    -webkit-text-fill-color: unset;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .animate-float,
+  .animate-pulse-glow,
+  .animate-slide-in,
+  .animate-video-fade-in,
+  .animate-control-slide-up {
+    animation: none;
+  }
+}
+
+/* ==========================================
+   PERFORMANCE OPTIMIZATIONS
+   ========================================== */
+
+/* GPU acceleration for animations */
+.video-player-container *,
+.anime-card,
+.glass-card {
+  will-change: transform, opacity;
+}
+
+.video-controls {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Optimize for high DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .video-player-container {
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.4);
+  }
+  
+  .glass-card {
+    box-shadow: 0 16px 64px rgba(139, 69, 255, 0.2);
+  }
+}
+
+/* Print styles */
+@media print {
+  .video-player-container,
+  .particles,
+  .nav-mobile,
+  button {
+    display: none !important;
+  }
+  
+  .glass-card {
+    background: white !important;
+    color: black !important;
+    border: 1px solid #ccc !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
